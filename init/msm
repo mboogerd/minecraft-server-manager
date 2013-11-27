@@ -388,7 +388,7 @@ world_backup() {
 		echo -n "Backing up world \"${WORLD_NAME[$1]}\"... "		
 		file_name="$(date "+%F-%H-%M-%S").zip"
 		server_property "$server_id" USERNAME
-		as_user "${SERVER_USERNAME[$server_id]}" "mkdir -p \"${WORLD_BACKUP_PATH[$1]}\" && cd \"$containing_dir\" && zip -rq \"${WORLD_BACKUP_PATH[$1]}/${file_name}\" \"${dir_name}\""
+		as_user "${SERVER_USERNAME[$server_id]}" "mkdir -p \"${WORLD_BACKUP_PATH[$1]}\" && cd \"$containing_dir\" && zip -b /tmp -rq \"${WORLD_BACKUP_PATH[$1]}/${file_name}\" \"${dir_name}\""
 		echo "Done."
 	fi
 
@@ -1630,7 +1630,7 @@ server_backup() {
 
 	echo -n "Backing up the entire server directory... "
 	
-	zip_flags="-rq"
+	zip_flags="-b /tmp -rq"
 	# Add the "y" flag if symbolic links should not be followed
 	if [ "${SERVER_COMPLETE_BACKUP_FOLLOW_SYMLINKS[$1]}" != "true" ]; then
 		zip_flags="${zip_flags}y"
