@@ -1405,15 +1405,9 @@ server_start() {
 	if server_is_running "$1"; then
 		echo "Server \"${SERVER_NAME[$1]}\" is already running!"
 	else
-<<<<<<< HEAD
 #		if ! which java > /dev/null; then
 #			error_exit JAVA_NOT_INSTALLED "Could not start server as Java is not installed."
 #		fi
-=======
-		if ! which java > /dev/null; then
-			# error_exit JAVA_NOT_INSTALLED "Could not start server as Java is not installed."
-		fi
->>>>>>> refs/remotes/origin/prod
 		server_ensure_jar "$1"
 		server_ensure_links "$1"
 		server_worlds_to_ram "$1"
