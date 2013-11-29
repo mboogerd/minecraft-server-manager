@@ -1406,7 +1406,7 @@ server_start() {
 		echo "Server \"${SERVER_NAME[$1]}\" is already running!"
 	else
 		if ! which java > /dev/null; then
-			error_exit JAVA_NOT_INSTALLED "Could not start server as Java is not installed."
+			# error_exit JAVA_NOT_INSTALLED "Could not start server as Java is not installed."
 		fi
 		server_ensure_jar "$1"
 		server_ensure_links "$1"
